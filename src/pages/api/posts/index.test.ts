@@ -1,4 +1,4 @@
-import { postCreateHandler } from "@/fetcher/posts/create/mock";
+import { createPostHandler } from "@/fetcher/posts/create/mock";
 import { setupMockServer } from "@/jest";
 import { handlers } from "@/mock/handlers";
 import { testApiHandler } from "next-test-api-route-handler";
@@ -33,7 +33,7 @@ describe("src/pages/api/posts/index.test.ts", () => {
     });
     test("400", async () => {
       // Intercept mock Error
-      server.use(postCreateHandler(400));
+      server.use(createPostHandler(400));
       await testApiHandler({
         ...params,
         test: async ({ fetch }) => {

@@ -8,7 +8,7 @@ export type Data = {
 
 export const path = () => `https://api.example.com/posts`;
 
-export function fetchPostCreate(body: unknown) {
+export function createPost(body: unknown) {
   return fetch(path(), {
     method: "POST",
     body: JSON.stringify(body),

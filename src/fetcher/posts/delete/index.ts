@@ -6,7 +6,7 @@ export type Data = {
 
 export const path = (id: string) => `https://api.example.com/posts/${id}`;
 
-export function fetchPostDelete(id: string) {
+export function deletePost(id: string) {
   return fetch(path(id), {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },

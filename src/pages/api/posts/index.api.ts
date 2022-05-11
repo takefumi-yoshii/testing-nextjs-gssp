@@ -1,9 +1,9 @@
-import { fetchPostCreate } from "@/fetcher/posts/create";
+import { createPost } from "@/fetcher/posts/create";
 import "@/mock";
 import type { NextApiHandler } from "next";
 
 const postHandler: NextApiHandler = async (req, res) => {
-  const { data, err } = await fetchPostCreate(req.body);
+  const { data, err } = await createPost(req.body);
   if (err) {
     return res.status(err.status).json({ message: err.message });
   }

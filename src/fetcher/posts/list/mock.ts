@@ -2,7 +2,7 @@ import type { Err } from "@/fetcher/type";
 import { rest } from "msw";
 import { Data, path } from ".";
 
-export const postListHandler = (status: 200 | 500 = 200) =>
+export const listPostHandler = (status: 200 | 500 = 200) =>
   rest.get<{}, { id: string }, Data | Err>(path(), (req, res, ctx) => {
     if (status === 500)
       return res(

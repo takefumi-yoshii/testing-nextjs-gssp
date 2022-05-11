@@ -8,7 +8,7 @@ export type Data = {
 
 export const path = (id: string) => `https://api.example.com/posts/${id}`;
 
-export function fetchPostShow(id: string) {
+export function showPost(id: string) {
   return fetch(path(id)).then(async (res) => {
     const d = await res.json();
     if (!res.ok) {

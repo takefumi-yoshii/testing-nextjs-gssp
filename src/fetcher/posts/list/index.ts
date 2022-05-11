@@ -12,7 +12,7 @@ export type Data = {
 
 export const path = () => `https://api.example.com/posts`;
 
-export function fetchPostList() {
+export function listPost() {
   return fetch(path()).then(async (res) => {
     const d = await res.json();
     if (!res.ok) {

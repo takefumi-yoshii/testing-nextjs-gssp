@@ -8,7 +8,7 @@ export type Data = {
 
 export const path = (id: string) => `https://api.example.com/posts/${id}`;
 
-export function fetchPostUpdate(id: string, body: unknown) {
+export function updatePost(id: string, body: unknown) {
   return fetch(path(id), {
     method: "PUT",
     body: JSON.stringify(body),

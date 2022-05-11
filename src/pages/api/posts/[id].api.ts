@@ -1,5 +1,5 @@
-import { fetchPostDelete } from "@/fetcher/posts/delete";
-import { fetchPostUpdate } from "@/fetcher/posts/update";
+import { deletePost } from "@/fetcher/posts/delete";
+import { updatePost } from "@/fetcher/posts/update";
 import "@/mock";
 import type { NextApiHandler } from "next";
 
@@ -8,7 +8,7 @@ const putHandler: NextApiHandler = async (req, res) => {
   if (typeof id !== "string") {
     return res.status(400).json({ message: "Bad Request" });
   }
-  const { data, err } = await fetchPostUpdate(id, req.body);
+  const { data, err } = await updatePost(id, req.body);
   if (err) {
     return res.status(err.status).json({ message: err.message });
   }
@@ -20,7 +20,7 @@ const deleteHandler: NextApiHandler = async (req, res) => {
   if (typeof id !== "string") {
     return res.status(400).json({ message: "Bad Request" });
   }
-  const { data, err } = await fetchPostDelete(id);
+  const { data, err } = await deletePost(id);
   if (err) {
     return res.status(err.status).json({ message: err.message });
   }

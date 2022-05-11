@@ -1,4 +1,4 @@
-import { postListHandler } from "@/fetcher/posts/list/mock";
+import { listPostHandler } from "@/fetcher/posts/list/mock";
 import { gsspCtx, isPropsResult, setupMockServer } from "@/jest";
 import { handlers } from "@/mock/handlers";
 import "@testing-library/jest-dom";
@@ -17,7 +17,7 @@ describe("src/pages/posts/index.test.tsx", () => {
 
   test("If data acquisition fails, an error will be displayed", async () => {
     // Intercept mock Error
-    server.use(postListHandler(500));
+    server.use(listPostHandler(500));
     const res = await getServerSideProps(gsspCtx());
     if (!isPropsResult(res)) throw new Error("no props");
     render(<Page {...res.props} />);

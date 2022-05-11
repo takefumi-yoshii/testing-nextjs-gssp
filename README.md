@@ -104,7 +104,7 @@ test("If the data acquisition is successful, the title will be displayed.", asyn
 
 test("If data acquisition fails, an error will be displayed", async () => {
   // Intercept mock Error
-  server.use(postListHandler(500));
+  server.use(listPostHandler(500));
   const res = await getServerSideProps(gsspCtx());
   if (!isPropsResult(res)) throw new Error("no props");
   render(<Page {...res.props} />);
@@ -140,12 +140,12 @@ test("201", async () => {
 });
 ```
 
-Like `getServerSideProps`, MSW handlers utilize factory functions.`server.use(postCreateHandler(400));`
+Like `getServerSideProps`, MSW handlers utilize factory functions.`server.use(createPostHandler(400));`
 
 ```typescript
 test("400", async () => {
   // Intercept mock Error
-  server.use(postCreateHandler(400));
+  server.use(createPostHandler(400));
   await testApiHandler({
     handler,
     url: "/api/posts",

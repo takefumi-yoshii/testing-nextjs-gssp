@@ -2,7 +2,7 @@ import type { Err } from "@/fetcher/type";
 import { rest } from "msw";
 import { Data, path } from ".";
 
-export const postDeleteHandler = (status: 200 | 400 = 200) =>
+export const deletePostHandler = (status: 200 | 400 = 200) =>
   rest.delete<{}, { id: string }, Data | Err>(path(":id"), (req, res, ctx) => {
     if (status === 400)
       return res(
