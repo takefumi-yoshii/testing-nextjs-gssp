@@ -1,0 +1,43 @@
+{
+  "name": "testing-nextjs-gssp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint": "next lint",
+    "test": "jest"
+  },
+  "dependencies": {
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@types/node": "17.0.31",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.3",
+    "eslint": "8.15.0",
+    "eslint-config-next": "12.1.6",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "msw": "^0.39.2",
+    "next-test-api-route-handler": "^3.1.2",
+    "node-mocks-http": "^1.11.0",
+    "prettier": "^2.6.2",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "typescript": "4.6.4",
+    "whatwg-fetch": "^3.6.2"
+  },
+  "prettier": {
+    "singleQuote": false,
+    "semi": true
+  },
+  "msw": {
+    "workerDirectory": "public"
+  }
+}
