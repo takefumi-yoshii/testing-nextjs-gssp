@@ -22,7 +22,7 @@ export const gsspCtx = (
   ...ctx,
 });
 
-export function isPropsResult<T>(
+export function hasProps<T>(
   res: GetServerSidePropsResult<T>
 ): res is { props: T } {
   return (
