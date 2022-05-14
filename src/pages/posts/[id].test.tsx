@@ -1,5 +1,5 @@
 import { showPostHandler } from "@/fetcher/posts/show/mock";
-import { gsspCtx, hasProps, setupMockServer } from "@/jest";
+import { assertHasProps, gsspCtx, setupMockServer } from "@/jest";
 import { handlers } from "@/mock/handlers";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
@@ -12,7 +12,7 @@ describe("src/pages/posts/[id].test.tsx", () => {
     const res = await getServerSideProps(
       gsspCtx({ query: { id: "lorem-ipsum" } })
     );
-    if (!hasProps(res)) throw new Error("no props");
+    assertHasProps(res);
     render(<Page {...res.props} />);
     expect(screen.getByText("Post: Lorem ipsum")).toBeInTheDocument();
   });
@@ -21,7 +21,7 @@ describe("src/pages/posts/[id].test.tsx", () => {
     // Intercept mock Error
     server.use(showPostHandler(400));
     const res = await getServerSideProps(gsspCtx());
-    if (!hasProps(res)) throw new Error("no props");
+    assertHasProps(res);
     render(<Page {...res.props} />);
     expect(screen.getByText("Bad Request")).toBeInTheDocument();
   });

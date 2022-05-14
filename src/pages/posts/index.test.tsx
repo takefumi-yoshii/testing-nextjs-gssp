@@ -1,5 +1,5 @@
 import { listPostHandler } from "@/fetcher/posts/list/mock";
-import { gsspCtx, hasProps, setupMockServer } from "@/jest";
+import { assertHasProps, gsspCtx, setupMockServer } from "@/jest";
 import { handlers } from "@/mock/handlers";
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
@@ -10,7 +10,7 @@ const server = setupMockServer(...handlers);
 describe("src/pages/posts/index.test.tsx", () => {
   test("If the data acquisition is successful, the title will be displayed.", async () => {
     const res = await getServerSideProps(gsspCtx());
-    if (!hasProps(res)) throw new Error("no props");
+    assertHasProps(res);
     render(<Page {...res.props} />);
     expect(screen.getByText("Posts")).toBeInTheDocument();
   });
@@ -19,7 +19,7 @@ describe("src/pages/posts/index.test.tsx", () => {
     // Intercept mock Error
     server.use(listPostHandler(500));
     const res = await getServerSideProps(gsspCtx());
-    if (!hasProps(res)) throw new Error("no props");
+    assertHasProps(res);
     render(<Page {...res.props} />);
     expect(screen.getByText("Internal Server Error")).toBeInTheDocument();
   });

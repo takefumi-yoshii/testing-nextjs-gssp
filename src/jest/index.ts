@@ -31,3 +31,9 @@ export function hasProps<T>(
     typeof (res as any).props === "object"
   );
 }
+
+export function assertHasProps<T>(
+  res: GetServerSidePropsResult<T>
+): asserts res is { props: T } {
+  if (!hasProps(res)) throw new Error("no props");
+}

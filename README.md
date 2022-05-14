@@ -97,7 +97,7 @@ Using the imported `getServerSideProps` and the Page component file, we can crea
 ```typescript
 test("If the data acquisition is successful, the title will be displayed.", async () => {
   const res = await getServerSideProps(gsspCtx());
-  if (!hasProps(res)) throw new Error("no props");
+  assertHasProps(res);
   render(<Page {...res.props} />);
   expect(screen.getByText("Posts")).toBeInTheDocument();
 });
@@ -106,7 +106,7 @@ test("If data acquisition fails, an error will be displayed", async () => {
   // Intercept mock Error
   server.use(listPostHandler(500));
   const res = await getServerSideProps(gsspCtx());
-  if (!hasProps(res)) throw new Error("no props");
+  assertHasProps(res);
   render(<Page {...res.props} />);
   expect(screen.getByText("Internal Server Error")).toBeInTheDocument();
 });
@@ -117,7 +117,7 @@ Dynamic route testing can be follow with the `gsspCtx` function. This test preve
 ```typescript
 test("If the data acquisition is successful, the title will be displayed.", async () => {
   const res = await getServerSideProps(gsspCtx({ query: { id: "123" } }));
-  if (!hasProps(res)) throw new Error("no props");
+  assertHasProps(res);
   render(<Page {...res.props} />);
   expect(screen.getByText("Post: Lorem ipsum")).toBeInTheDocument();
 });
