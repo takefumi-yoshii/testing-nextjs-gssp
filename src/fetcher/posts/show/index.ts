@@ -1,4 +1,4 @@
-import type { Err } from "@/fetcher/type";
+import { fetcher } from "@/fetcher";
 
 export type Data = {
   id: string;
@@ -8,14 +8,4 @@ export type Data = {
 
 export const path = (id: string) => `https://api.example.com/posts/${id}`;
 
-export function showPost(id: string) {
-  return fetch(path(id)).then(async (res) => {
-    const d = await res.json();
-    if (!res.ok) {
-      const err: Err = { ...d, status: res.status };
-      return { err };
-    }
-    const data: Data = { ...d, id };
-    return { data };
-  });
-}
+export const showPost = (id: string) => fetcher<Data>(path(id));
