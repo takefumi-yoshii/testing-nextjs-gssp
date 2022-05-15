@@ -22,18 +22,14 @@ export const gsspCtx = (
   ...ctx,
 });
 
-export function hasProps<T>(
-  res: GetServerSidePropsResult<T>
-): res is { props: T } {
-  return (
-    typeof res === "object" &&
-    (res as any)["props"] &&
-    typeof (res as any).props === "object"
-  );
-}
+class AssertionError extends Error {}
 
 export function assertHasProps<T>(
   res: GetServerSidePropsResult<T>
 ): asserts res is { props: T } {
-  if (!hasProps(res)) throw new Error("no props");
+  const hasProps =
+    typeof res === "object" &&
+    (res as any)["props"] &&
+    typeof (res as any).props === "object";
+  if (!hasProps) throw new AssertionError("no props");
 }
