@@ -1,4 +1,4 @@
-export const PostShow = ({ title, body }: { title: string; body: string }) => {
+export const Post = ({ title, body }: { title: string; body: string }) => {
   return (
     <div>
       <h1>Post: {title}</h1>

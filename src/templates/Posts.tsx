@@ -1,7 +1,7 @@
 import { Item } from "@/fetcher/posts/list";
 import Link from "next/link";
 
-export const PostList = ({ items }: { items: Item[] }) => {
+export const Posts = ({ items }: { items: Item[] }) => {
   return (
     <div>
       <h1>Posts</h1>
