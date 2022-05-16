@@ -1,13 +1,15 @@
 export const Error = ({
   message = "Internal Server Error",
-  status = 500,
+  status,
+  code,
 }: {
   message?: string;
   status?: number;
+  code?: string;
 }) => {
   return (
     <div>
-      <h1>{status}</h1>
+      <h1>{status || code}</h1>
       <p>{message}</p>
     </div>
   );
