@@ -20,7 +20,7 @@ describe("src/pages/posts/index.test.tsx", () => {
   });
 
   test("If data acquisition fails, an error will be displayed", async () => {
-    mockUserFindMany(404);
+    mockUserFindMany(2);
     const res = await getServerSideProps(gsspCtx());
     assertHasProps(res);
     render(<Page {...res.props} />);

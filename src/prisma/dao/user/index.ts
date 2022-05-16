@@ -1,8 +1,14 @@
-import { prisma } from "@/prisma";
+import { prisma, Prisma } from "@/prisma";
 import { convoluteData, convoluteErr } from "@/prisma/dao";
 
-export const userFindMany = async () =>
+export const userFindMany = async (args?: Prisma.UserFindManyArgs) =>
   prisma.user
-    .findMany()
+    .findMany(args)
     .then((users) => convoluteData({ users }))
+    .catch(convoluteErr);
+
+export const userFindUnique = async (args: Prisma.UserFindUniqueArgs) =>
+  prisma.user
+    .findUnique(args)
+    .then((user) => convoluteData({ user }))
     .catch(convoluteErr);

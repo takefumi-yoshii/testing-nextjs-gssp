@@ -11,7 +11,6 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
 export const Page: NextPage<Props> = ({ data, err }) => {
   if (err) return <Error message={err.message} code={err.code} />;
-  if (!data) return <Error />;
   return <Users users={data.users} />;
 };
 

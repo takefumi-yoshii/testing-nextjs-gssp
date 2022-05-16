@@ -20,3 +20,6 @@ export function convoluteErr(err: unknown): Err {
   }
   throw err;
 }
+
+export const NotFoundError = () =>
+  new PrismaClientKnownRequestError("Not Found", "P2025", "1");
